@@ -1,27 +1,52 @@
-(function(exports) {
-    var __r0, __r1;
-    exports.apply = apply;
-    function apply() {
-        var __this = this;
-        var __t = this["type"];
-        if (__t === "item") {
-            return "<li>" + this["ctx"]["value"] + "</li>";
-            return;
-        } else if (__t === "list") {
-            var res = [ "<ul>" ];
-            this["items"].forEach(function(item) {
-                res.push(("", __r0 = __this["type"], __this["type"] = "item", __r1 = __this["ctx"], __this["ctx"] = item, __r2 = apply.call(__this), __this["type"] = __r0, __this["ctx"] = __r1, "", __r2));
-            });
-            res.push("</ul>");
-            return res.join("");
-            return;
-        } else {
-            return $e.call(this, []);
-        }
+var __$ref = {};
+
+function apply(ctx) {
+    ctx = ctx || this;
+    try {
+        return applyc(ctx, __$ref);
+    } catch (e) {
+        e.xjstContext = ctx;
+        throw e;
     }
-    function $e() {
-        throw new Error;
-        return;
+}
+
+exports.apply = apply;
+
+function applyc(__$ctx, __$ref) {
+    var __$t = __$ctx.type;
+    if (__$t === "item") {
+        return "<li>" + __$ctx.ctx.value + "</li>";
+    } else if (__$t === "list") {
+        var __$r = __$b2(__$ctx, __$ref);
+        if (__$r !== __$ref) return __$r;
     }
-    return exports;
-})(typeof exports === "undefined" ? {} : exports);
+}
+
+[].forEach(function(fn) {
+    fn(exports, this);
+}, {
+    recordExtensions: function(ctx) {
+        ctx["type"] = undefined;
+        ctx["ctx"] = undefined;
+    },
+    resetApplyNext: function(ctx) {}
+});
+
+function __$b2(__$ctx, __$ref) {
+    var res__$0 = [ "<ul>" ];
+    __$ctx.items.forEach(function(item) {
+        res__$0.push(function __$lb__$1() {
+            var __$r__$2;
+            var __$l0__$3 = __$ctx.type;
+            __$ctx.type = "item";
+            var __$l1__$4 = __$ctx.ctx;
+            __$ctx.ctx = item;
+            __$r__$2 = applyc(__$ctx, __$ref);
+            __$ctx.type = __$l0__$3;
+            __$ctx.ctx = __$l1__$4;
+            return __$r__$2;
+        }());
+    });
+    res__$0.push("</ul>");
+    return res__$0.join("");
+}

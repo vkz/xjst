@@ -1,25 +1,32 @@
-(function(exports) {
-    exports.apply = apply;
-    function apply() {
-        var __t = this["elem"];
-        if (__t === "div") {
-            if (this["colour"] === "blue") {
-                return '<div class="blue">' + this["body"] + "</div>";
-                return;
-            } else {
-                return "<div>" + this["body"] + "</div>";
-                return;
-            }
-        } else if (__t === "a") {
-            return '<a href="' + this["href"] + '">' + this["text"] + "</a>";
-            return;
-        } else {
-            return $e.call(this, []);
-        }
+var __$ref = {};
+
+function apply(ctx) {
+    ctx = ctx || this;
+    try {
+        return applyc(ctx, __$ref);
+    } catch (e) {
+        e.xjstContext = ctx;
+        throw e;
     }
-    function $e() {
-        throw new Error;
-        return;
+}
+
+exports.apply = apply;
+
+function applyc(__$ctx, __$ref) {
+    if (__$ctx.elem === "div" && __$ctx.colour === "blue") {
+        return '<div class="blue">' + __$ctx.body + "</div>";
     }
-    return exports;
-})(typeof exports === "undefined" ? {} : exports);
+    var __$t = __$ctx.elem;
+    if (__$t === "div") {
+        return "<div>" + __$ctx.body + "</div>";
+    } else if (__$t === "a") {
+        return '<a href="' + __$ctx.href + '">' + __$ctx.text + "</a>";
+    }
+}
+
+[].forEach(function(fn) {
+    fn(exports, this);
+}, {
+    recordExtensions: function(ctx) {},
+    resetApplyNext: function(ctx) {}
+});
