@@ -1,4 +1,5 @@
 var bemxjst = require("bem-xjst"),
+    fs = require("fs"),
     lo = require("lodash"),
     pp = require("zeHelpers").prettyPrint,
     templates = [ 
